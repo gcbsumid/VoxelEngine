@@ -81,13 +81,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="engine\Engine.cpp" />
+    <ClCompile Include="engine\GraphicsSystem.cpp" />
+    <ClCompile Include="engine\InputSystem.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="engine\Engine.h" />
+    <ClInclude Include="engine\GraphicsSystem.h" />
+    <ClInclude Include="engine\InputSystem.h" />
     <ClInclude Include="window\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

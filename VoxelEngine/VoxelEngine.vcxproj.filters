@@ -27,7 +27,10 @@
     <ClCompile Include="window\Window.cpp">
       <Filter>Source Files\window</Filter>
     </ClCompile>
-    <ClCompile Include="engine\Engine.cpp">
+    <ClCompile Include="engine\GraphicsSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\InputSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,8 +38,14 @@
     <ClInclude Include="window\Window.h">
       <Filter>Source Files\window</Filter>
     </ClInclude>
-    <ClInclude Include="engine\Engine.h">
+    <ClInclude Include="engine\GraphicsSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="engine\InputSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders.shader" />
   </ItemGroup>
 </Project>

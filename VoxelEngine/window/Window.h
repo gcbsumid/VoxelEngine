@@ -3,7 +3,8 @@
 
 #include <windows.h>
 #include <windowsx.h>
-#include "../engine/Engine.h"
+#include "../engine/GraphicsSystem.h"
+#include "../engine/InputSystem.h"
 
 #define SCREEN_HEIGHT 600
 #define SCREEN_WIDTH 800
@@ -11,27 +12,42 @@
 namespace VoxelEngine {
     class Window {
     public:
-        Window(UINT width = SCREEN_WIDTH, UINT height = SCREEN_HEIGHT);
+        Window(bool isFullscreen);
         ~Window();
 
-        void Initialize(HINSTANCE hInstance,
-                        int nShowCmd);
+        bool Initialize(HINSTANCE hInstance);
+        void Run();
+        void Shutdown();
 
-        int Run();
+        LRESULT CALLBACK MessageHandler(HWND hwnd,
+                                        UINT message,
+                                        WPARAM wParam,
+                                        LPARAM lParam);
 
     private:
-        static LRESULT CALLBACK WindowProc(HWND hwnd,
-                                           UINT message,
-                                           WPARAM wParam,
-                                           LPARAM lParam);
-        UINT mWidth;
-        UINT mHeight;
+
+        bool ProcessFrame();
+        void InitializeWindows(int &width, int &height);
+        void ShutdownWindow();
+        
+        InputSystem* mInput;
+        GraphicsSystem* mGraphics;
+
+        int mWidth;
+        int mHeight;
+        bool mFullScreen;
 
         HWND mWindow;
-        WNDCLASSEX mWndClass;
-        
-        Engine* mEngine;
+        HINSTANCE mInstance;
+        LPCWSTR  mAppName;
     };
+
+    static LRESULT CALLBACK WindowProc(HWND hwnd,
+                                       UINT message,
+                                       WPARAM wParam,
+                                       LPARAM lParam);
+
+    static Window* ApplicationHandle = 0;
 }
 
 #endif
