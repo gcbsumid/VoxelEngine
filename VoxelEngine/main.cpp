@@ -4,7 +4,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
                    HINSTANCE hPrevInstance,
                    LPSTR lpCmdLine,
                    int nShowCmd) {
-    VoxelEngine::Window window(true);
+    VoxelEngine::Window window(false);
     
     // initialize and run window
     window.Initialize(hInstance);

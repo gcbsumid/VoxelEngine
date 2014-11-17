@@ -48,8 +48,8 @@ namespace VoxelEngine {
         }
 
         // Create the D3D11 Device
-        mGraphics = new GraphicsSystem(mWidth, mHeight, mFullScreen);
-        if (!mGraphics->Initialize(mWindow)) {
+        mGraphics = new GraphicsSystem(mFullScreen);
+        if (!mGraphics->Initialize(mWindow, mWidth, mHeight)) {
             return false;
         }
         return true;

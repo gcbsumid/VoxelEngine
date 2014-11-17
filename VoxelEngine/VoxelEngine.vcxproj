@@ -81,12 +81,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="engine\D3DClass.cpp" />
     <ClCompile Include="engine\GraphicsSystem.cpp" />
     <ClCompile Include="engine\InputSystem.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="engine\D3DClass.h" />
     <ClInclude Include="engine\GraphicsSystem.h" />
     <ClInclude Include="engine\InputSystem.h" />
     <ClInclude Include="window\Window.h" />

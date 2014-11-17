@@ -1,5 +1,5 @@
-#ifndef INPUTSYSTEM_H
-#define INPUTSYSTEM_H
+#ifndef INPUT_SYSTEM_H
+#define INPUT_SYSTEM_H
 
 #include <vector>
 
