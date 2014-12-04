@@ -85,39 +85,51 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="engine\Camera.cpp" />
-    <ClCompile Include="engine\ColorShader.cpp" />
-    <ClCompile Include="engine\D3DClass.cpp" />
-    <ClCompile Include="engine\GraphicsSystem.cpp" />
-    <ClCompile Include="engine\InputSystem.cpp" />
+    <ClCompile Include="engine\graphics\Camera.cpp" />
+    <ClCompile Include="engine\graphics\ColorShader.cpp" />
+    <ClCompile Include="engine\graphics\D3DClass.cpp" />
+    <ClCompile Include="engine\graphics\GraphicsSystem.cpp" />
+    <ClCompile Include="engine\input\InputSystem.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="engine\Model.cpp" />
+    <ClCompile Include="engine\graphics\Model.cpp" />
     <ClCompile Include="window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="engine\Camera.h" />
-    <ClInclude Include="engine\ColorShader.h" />
-    <ClInclude Include="engine\D3DClass.h" />
-    <ClInclude Include="engine\GraphicsSystem.h" />
-    <ClInclude Include="engine\InputSystem.h" />
-    <ClInclude Include="engine\Model.h" />
+    <ClInclude Include="engine\graphics\Camera.h" />
+    <ClInclude Include="engine\graphics\ColorShader.h" />
+    <ClInclude Include="engine\graphics\D3DClass.h" />
+    <ClInclude Include="engine\graphics\GraphicsSystem.h" />
+    <ClInclude Include="engine\input\InputSystem.h" />
+    <ClInclude Include="engine\graphics\Model.h" />
     <ClInclude Include="window\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="engine\ColorPixelShader.hlsl">
+    <None Include="shaders\ColorPixelShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">main</EntryPointName>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
       <FileType>Document</FileType>
     </None>
-    <None Include="engine\ColorVertexShader.hlsl">
+    <None Include="shaders\ColorVertexShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">main</EntryPointName>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
       <FileType>Document</FileType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="shaders\TexturePS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TexturePixelShader</EntryPointName>
+    </FxCompile>
+    <FxCompile Include="shaders\TextureVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TextureVertexShader</EntryPointName>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,8 +3,8 @@
 
 #include <windows.h>
 #include <windowsx.h>
-#include "../engine/GraphicsSystem.h"
-#include "../engine/InputSystem.h"
+#include "../engine/graphics/GraphicsSystem.h"
+#include "../engine/input/InputSystem.h"
 
 #define SCREEN_HEIGHT 600
 #define SCREEN_WIDTH 800

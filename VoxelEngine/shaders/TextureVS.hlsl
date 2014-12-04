@@ -17,11 +17,11 @@ struct PixelInputType {
 };
 
 // Shader 
-PixelInputType main(VertexInputType input) {
+PixelInputType TextureVertexShader(VertexInputType input) {
     PixelInputType output;
 
     // change position to be vector 4 
-    input.positon.w = 1.0f;
+    input.position.w = 1.0f;
 
     // calculate position of vertex
     output.position = mul(input.position, worldMatrix);
