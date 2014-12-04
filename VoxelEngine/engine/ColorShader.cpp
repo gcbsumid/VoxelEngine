@@ -17,7 +17,7 @@ bool ColorShader::Initialize(ID3D11Device* device, HWND hwnd) {
     bool result = false;
 
     // Initialize the Vertex and Pixel Shaders;
-    result = InitializeShader(device, hwnd, L"engine/ColorVertexShader.hlsl", L"engine/ColorPixelShader.hlsl");
+    result = InitializeShader(device, hwnd, L"shaders/ColorVertexShader.hlsl", L"shaders/ColorPixelShader.hlsl");
     if (!result) return false;
     return true;
 }
