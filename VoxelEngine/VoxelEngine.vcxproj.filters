@@ -27,13 +27,22 @@
     <ClCompile Include="window\Window.cpp">
       <Filter>Source Files\window</Filter>
     </ClCompile>
-    <ClCompile Include="engine\GraphicsSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="engine\InputSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="engine\D3DClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\GraphicsSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\ColorShader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,8 +59,18 @@
     <ClInclude Include="engine\D3DClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="engine\Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\ColorShader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders.shader" />
+    <None Include="engine\ColorPixelShader.hlsl" />
+    <None Include="engine\ColorVertexShader.hlsl" />
   </ItemGroup>
 </Project>

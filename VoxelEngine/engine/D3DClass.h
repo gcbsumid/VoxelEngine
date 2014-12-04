@@ -1,6 +1,11 @@
 #ifndef D3D_CLASS_H
 #define D3D_CLASS_H
 
+#pragma comment (lib, "dxgi.lib")
+#pragma comment (lib, "d3d11.lib")
+#pragma comment (lib, "d3dx11.lib")
+#pragma comment (lib, "d3dx10.lib")
+
 #pragma warning( disable : 4005 )
 #include <DXGI.h>
 #include <D3Dcommon.h>
@@ -10,11 +15,6 @@
 //#include <d3dx11.h>
 //#include <d3dx10.h>
 #pragma warning( default : 4005 )
-
-#pragma comment (lib, "dxgi.lib")
-#pragma comment (lib, "d3d11.lib")
-#pragma comment (lib, "d3dx11.lib")
-#pragma comment (lib, "d3dx10.lib")
 
 namespace VoxelEngine {
     class D3DClass {

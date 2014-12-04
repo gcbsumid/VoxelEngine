@@ -31,6 +31,19 @@ bool D3DClass::Initialize(int width,
     unsigned int numModes, numerator, denominator, strLength;
     DXGI_MODE_DESC* displayModeList;
     DXGI_ADAPTER_DESC adapterDesc;
+
+    DXGI_SWAP_CHAIN_DESC swapChainDesc;
+    D3D_FEATURE_LEVEL featureLevel;
+    ID3D11Texture2D* backBufferPtr;
+
+    // Set up the depth buffer description
+    D3D11_TEXTURE2D_DESC depthBufferDesc;
+    D3D11_DEPTH_STENCIL_DESC depthStencilDesc;
+    D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc;
+
+    D3D11_RASTERIZER_DESC rasterDesc;
+    D3D11_VIEWPORT viewport;
+    float fieldOfView, screenAspect;
     int error;
 
     // Store Vsync Setting
@@ -110,10 +123,6 @@ bool D3DClass::Initialize(int width,
     factory = nullptr;
     displayModeList = nullptr;
 
-    DXGI_SWAP_CHAIN_DESC swapChainDesc;
-    D3D_FEATURE_LEVEL featureLevel;
-    ID3D11Texture2D* backBufferPtr;
-
     // Initialize the swap chain desc
     ZeroMemory(&swapChainDesc, sizeof(swapChainDesc));
 
@@ -136,7 +145,12 @@ bool D3DClass::Initialize(int width,
     swapChainDesc.SampleDesc.Count = 1;
     swapChainDesc.SampleDesc.Quality = 0;
 
-    swapChainDesc.Windowed = !fullScreen;
+    if (fullScreen) {
+        swapChainDesc.Windowed = false;
+    } else {
+        swapChainDesc.Windowed = true;
+    }
+
     swapChainDesc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
     swapChainDesc.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
 
@@ -176,11 +190,6 @@ bool D3DClass::Initialize(int width,
     // Release the pointer to the back buffer
     backBufferPtr->Release();
     backBufferPtr = nullptr;
-
-    // Set up the depth buffer description
-    D3D11_TEXTURE2D_DESC depthBufferDesc;
-    D3D11_DEPTH_STENCIL_DESC depthStencilDesc;
-    D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc;
 
     ZeroMemory(&depthBufferDesc, sizeof(depthBufferDesc));
 
@@ -252,10 +261,6 @@ bool D3DClass::Initialize(int width,
     // to the output render pipeline
     mDeviceContext->OMSetRenderTargets(1, &mRenderTargetView, mDepthStencilView);
 
-    D3D11_RASTERIZER_DESC rasterDesc;
-    D3D11_VIEWPORT viewport;
-    float fieldOfView, screenAspect;
-
     rasterDesc.AntialiasedLineEnable = false;
     rasterDesc.CullMode = D3D11_CULL_BACK;
     rasterDesc.DepthBias = 0;
@@ -281,7 +286,7 @@ bool D3DClass::Initialize(int width,
     viewport.Width = (float)width;
     viewport.Height = (float)height;
     viewport.MinDepth = 0.0f;
-    viewport.MinDepth = 1.0f;
+    viewport.MaxDepth = 1.0f;
     viewport.TopLeftX = 0.0f;
     viewport.TopLeftY = 0.0f;
 

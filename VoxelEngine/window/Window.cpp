@@ -36,8 +36,9 @@ namespace VoxelEngine {
         mInstance = NULL;
     }
 
-    bool Window::Initialize(HINSTANCE hInstance) {
-        mInstance = hInstance;
+    bool Window::Initialize() {
+        mInstance = GetModuleHandle(NULL);
+
         ApplicationHandle = this;
         InitializeWindows(mWidth, mHeight);
 

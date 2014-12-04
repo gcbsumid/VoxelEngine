@@ -15,7 +15,7 @@ namespace VoxelEngine {
         Window(bool isFullscreen);
         ~Window();
 
-        bool Initialize(HINSTANCE hInstance);
+        bool Initialize();
         void Run();
         void Shutdown();
 

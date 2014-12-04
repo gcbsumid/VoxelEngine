@@ -7,7 +7,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
     VoxelEngine::Window window(false);
     
     // initialize and run window
-    window.Initialize(hInstance);
+    window.Initialize();
 
     // enter main loop
     window.Run();
