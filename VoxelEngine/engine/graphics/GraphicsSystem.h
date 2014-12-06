@@ -2,13 +2,9 @@
 #define GRAPHICS_SYSTEM_H
 
 #include "D3DClass.h"
-//#include "../d3dclass.h"
 #include "Camera.h"
 #include "Model.h"
-#include "ColorShader.h"
-//#include "../cameraclass.h"
-//#include "../modelclass.h"
-//#include "../colorshaderclass.h"
+#include "TextureShader.h"
 
 namespace VoxelEngine {
     class GraphicsSystem {
@@ -36,10 +32,7 @@ namespace VoxelEngine {
         D3DClass* mD3DClass;
         Camera* mCamera;
         Model* mModel;
-        ColorShader* mColorShader;
-        //CameraClass* mCamera;
-        //ModelClass* mModel;
-        //ColorShaderClass* mColorShader;
+        TextureShader* mTextureShader;
     };
 }
 

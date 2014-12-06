@@ -45,6 +45,12 @@
     <ClCompile Include="engine\graphics\Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="engine\graphics\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\graphics\TextureShader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window\Window.h">
@@ -68,6 +74,12 @@
     <ClInclude Include="engine\graphics\GraphicsSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="engine\graphics\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\graphics\TextureShader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\ColorVertexShader.hlsl" />
@@ -76,5 +88,8 @@
   <ItemGroup>
     <FxCompile Include="shaders\TextureVS.hlsl" />
     <FxCompile Include="shaders\TexturePS.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="data\seafloor.dds" />
   </ItemGroup>
 </Project>

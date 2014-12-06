@@ -5,7 +5,7 @@ GraphicsSystem::GraphicsSystem(bool isFullScreen)
     : mFullScreen(isFullScreen)
     , mCamera(nullptr)
     , mModel(nullptr)
-    , mColorShader(nullptr) {
+    , mTextureShader(nullptr) {
 
 }
 
@@ -36,25 +36,25 @@ bool GraphicsSystem::Initialize(HWND hwnd, int width, int height) {
 
     mModel = new Model();
     if (!mModel) return false;
-    if (!mModel->Initialize(mD3DClass->GetDevice())) {
+    if (!mModel->Initialize(mD3DClass->GetDevice(), L"data/seafloor.dds")) {
         MessageBox(hwnd, L"Could not initialize the model object.", L"Error", MB_OK);
         return false;
     }
 
-    mColorShader = new ColorShader();
-    if (!mColorShader) return false;
-    if (!mColorShader->Initialize(mD3DClass->GetDevice(), hwnd)) {
-        MessageBox(hwnd, L"Could not initialize the color shader object.", L"Error", MB_OK);
+    mTextureShader = new TextureShader();
+    if (!mTextureShader) return false;
+    if (!mTextureShader->Initialize(mD3DClass->GetDevice(), hwnd)) {
+        MessageBox(hwnd, L"Could not initialize the texture shader object.", L"Error", MB_OK);
     }
 
     return true;
 }
 
 void GraphicsSystem::Shutdown() {
-    if (mColorShader) {
-        mColorShader->Shutdown();
-        delete mColorShader;
-        mColorShader = nullptr;
+    if (mTextureShader) {
+        mTextureShader->Shutdown();
+        delete mTextureShader;
+        mTextureShader = nullptr;
     }
 
     if (mModel) {
@@ -95,9 +95,10 @@ bool GraphicsSystem::Render() {
     // pipeline to prepare them for drawing 
     mModel->Render(mD3DClass->GetDeviceContext());
     
-    if (!mColorShader->Render(mD3DClass->GetDeviceContext(),
+    if (!mTextureShader->Render(mD3DClass->GetDeviceContext(),
         mModel->GetIndexCount(),
-        world, view, projection)) {
+        world, view, projection, 
+        mModel->GetTexture())) {
         return false;
     }
 
