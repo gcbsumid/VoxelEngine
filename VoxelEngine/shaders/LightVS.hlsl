@@ -33,7 +33,7 @@ PixelInputType LightVertexShader(VertexInputType input) {
     output.tex = input.tex;
 
     // calculate the normal
-    output.normal = mult(input.normal, (float3x3)worldMatrix);
+    output.normal = mul(input.normal, (float3x3)worldMatrix);
     output.normal = normalize(output.normal);
 
     return output;
