@@ -57,12 +57,15 @@ bool Model::InitializeBuffers(ID3D11Device* device) {
     // Load the vertex array with data.
     vertices[0].position = D3DXVECTOR3(-1.0f, -1.0f, 0.0f);  // Bottom left.
     vertices[0].texCoord = D3DXVECTOR2(0.0f, 1.0f);
+    vertices[0].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
 
     vertices[1].position = D3DXVECTOR3(0.0f, 1.0f, 0.0f);  // Top middle.
     vertices[1].texCoord = D3DXVECTOR2(0.5f, 0.0f);
+    vertices[1].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
 
     vertices[2].position = D3DXVECTOR3(1.0f, -1.0f, 0.0f);  // Bottom right.
     vertices[2].texCoord = D3DXVECTOR2(1.0f, 1.0f);
+    vertices[2].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
 
     // Load the index array with data.
     indices[0] = 0;  // Bottom left.

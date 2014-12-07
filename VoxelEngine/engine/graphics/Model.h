@@ -25,6 +25,7 @@ namespace VoxelEngine {
         struct VertexType {
             D3DXVECTOR3 position;
             D3DXVECTOR2 texCoord;
+            D3DXVECTOR3 normal;
         };
 
         bool InitializeBuffers(ID3D11Device*);

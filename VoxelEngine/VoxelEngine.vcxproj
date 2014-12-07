@@ -89,6 +89,7 @@
     <ClCompile Include="engine\graphics\ColorShader.cpp" />
     <ClCompile Include="engine\graphics\D3DClass.cpp" />
     <ClCompile Include="engine\graphics\GraphicsSystem.cpp" />
+    <ClCompile Include="engine\graphics\Light.cpp" />
     <ClCompile Include="engine\graphics\LightShader.cpp" />
     <ClCompile Include="engine\input\InputSystem.cpp" />
     <ClCompile Include="main.cpp" />
@@ -102,6 +103,7 @@
     <ClInclude Include="engine\graphics\ColorShader.h" />
     <ClInclude Include="engine\graphics\D3DClass.h" />
     <ClInclude Include="engine\graphics\GraphicsSystem.h" />
+    <ClInclude Include="engine\graphics\Light.h" />
     <ClInclude Include="engine\graphics\LightShader.h" />
     <ClInclude Include="engine\input\InputSystem.h" />
     <ClInclude Include="engine\graphics\Model.h" />
