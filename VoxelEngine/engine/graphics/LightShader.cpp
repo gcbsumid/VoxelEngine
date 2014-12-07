@@ -106,7 +106,7 @@ bool LightShader::InitializeShader(ID3D11Device* device, HWND hwnd, WCHAR* vsFil
     polygonLayout[2].SemanticIndex = 0;
     polygonLayout[2].Format = DXGI_FORMAT_R32G32B32_FLOAT;
     polygonLayout[2].InputSlot = 0;
-    polygonLayout[2].AlignedByteOffset = 0;
+    polygonLayout[2].AlignedByteOffset = D3D11_APPEND_ALIGNED_ELEMENT;
     polygonLayout[2].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
     polygonLayout[2].InstanceDataStepRate = 0;
 

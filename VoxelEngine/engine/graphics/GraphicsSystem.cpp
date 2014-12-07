@@ -1,11 +1,13 @@
 #include "GraphicsSystem.h"
 
 using namespace VoxelEngine;
+
 GraphicsSystem::GraphicsSystem(bool isFullScreen)
     : mFullScreen(isFullScreen)
     , mCamera(nullptr)
     , mModel(nullptr)
-    , mTextureShader(nullptr) {
+    , mLightShader(nullptr)
+    , mLight(nullptr) {
 
 }
 
@@ -32,7 +34,7 @@ bool GraphicsSystem::Initialize(HWND hwnd, int width, int height) {
 
     mCamera = new Camera();
     if (!mCamera) return false;
-    mCamera->SetPosition(0.0f, 0.0f, -10.0f);
+    mCamera->SetPosition(0.0f, 0.0f, -5.0f);
 
     mModel = new Model();
     if (!mModel) return false;
@@ -41,20 +43,30 @@ bool GraphicsSystem::Initialize(HWND hwnd, int width, int height) {
         return false;
     }
 
-    mTextureShader = new TextureShader();
-    if (!mTextureShader) return false;
-    if (!mTextureShader->Initialize(mD3DClass->GetDevice(), hwnd)) {
-        MessageBox(hwnd, L"Could not initialize the texture shader object.", L"Error", MB_OK);
+    mLightShader = new LightShader();
+    if (!mLightShader) return false;
+    if (!mLightShader->Initialize(mD3DClass->GetDevice(), hwnd)) {
+        MessageBox(hwnd, L"Could not initialize the light shader object.", L"Error", MB_OK);
     }
+
+    mLight = new Light();
+    if (!mLight) return false;
+    mLight->SetDiffuseColor(1.0f, 0.0f, 1.0f, 1.0f);
+    mLight->SetDirection(0.0f, 0.0f, 1.0f);
 
     return true;
 }
 
 void GraphicsSystem::Shutdown() {
-    if (mTextureShader) {
-        mTextureShader->Shutdown();
-        delete mTextureShader;
-        mTextureShader = nullptr;
+    if (mLight) {
+        delete mLight;
+        mLight = nullptr;
+    }
+
+    if (mLightShader) {
+        mLightShader->Shutdown();
+        delete mLightShader;
+        mLightShader = nullptr;
     }
 
     if (mModel) {
@@ -74,10 +86,19 @@ void GraphicsSystem::Shutdown() {
 }
 
 bool GraphicsSystem::ProcessFrame() {
-    return Render();
+
+    static float rotation = 0.0f;
+
+    rotation += (float)D3DX_PI * 0.01f;
+
+    if (rotation > 360.0f) {
+        rotation -= 360.0f;
+    }
+
+    return Render(rotation);
 }
     
-bool GraphicsSystem::Render() {
+bool GraphicsSystem::Render(float rotation) {
     D3DXMATRIX world, view, projection;
 
     // Clear the buffers to begin the scene
@@ -91,14 +112,19 @@ bool GraphicsSystem::Render() {
     mD3DClass->GetWorldMatrix(world);
     mD3DClass->GetProjectionMatrix(projection);
 
+    // rotate the world matrix so the triangle will spin
+    D3DXMatrixRotationY(&world, rotation);
+
     // Put the model and vertex indices on the buffers on the graphics
     // pipeline to prepare them for drawing 
     mModel->Render(mD3DClass->GetDeviceContext());
     
-    if (!mTextureShader->Render(mD3DClass->GetDeviceContext(),
+    if (!mLightShader->Render(mD3DClass->GetDeviceContext(),
         mModel->GetIndexCount(),
         world, view, projection, 
-        mModel->GetTexture())) {
+        mModel->GetTexture(), 
+        mLight->GetDirection(),
+        mLight->GetDiffuseColor())) {
         return false;
     }
 

@@ -4,7 +4,8 @@
 #include "D3DClass.h"
 #include "Camera.h"
 #include "Model.h"
-#include "TextureShader.h"
+#include "LightShader.h"
+#include "Light.h"
 
 namespace VoxelEngine {
     class GraphicsSystem {
@@ -19,7 +20,7 @@ namespace VoxelEngine {
     private:
         void InitPipeline();
         void InitGraphics();
-        bool Render();
+        bool Render(float);
         
         int mWidth;
         int mHeight;
@@ -32,7 +33,8 @@ namespace VoxelEngine {
         D3DClass* mD3DClass;
         Camera* mCamera;
         Model* mModel;
-        TextureShader* mTextureShader;
+        LightShader* mLightShader;
+        Light* mLight;
     };
 }
 
