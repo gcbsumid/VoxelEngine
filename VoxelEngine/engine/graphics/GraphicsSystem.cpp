@@ -38,7 +38,7 @@ bool GraphicsSystem::Initialize(HWND hwnd, int width, int height) {
 
     mModel = new Model();
     if (!mModel) return false;
-    if (!mModel->Initialize(mD3DClass->GetDevice(), L"data/seafloor.dds")) {
+    if (!mModel->Initialize(mD3DClass->GetDevice(), "data/cube.txt", L"data/seafloor.dds")) {
         MessageBox(hwnd, L"Could not initialize the model object.", L"Error", MB_OK);
         return false;
     }
@@ -51,7 +51,7 @@ bool GraphicsSystem::Initialize(HWND hwnd, int width, int height) {
 
     mLight = new Light();
     if (!mLight) return false;
-    mLight->SetDiffuseColor(1.0f, 0.0f, 1.0f, 1.0f);
+    mLight->SetDiffuseColor(1.0f, 1.0f, 1.0f, 1.0f);
     mLight->SetDirection(0.0f, 0.0f, 1.0f);
 
     return true;

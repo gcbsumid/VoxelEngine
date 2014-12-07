@@ -152,6 +152,9 @@
   <ItemGroup>
     <Image Include="data\seafloor.dds" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\cube.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
